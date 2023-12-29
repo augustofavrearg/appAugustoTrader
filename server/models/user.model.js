@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../dbconnection.js';
+import PaidPlan from './paidplans.js';
 
 const User = sequelize.define('user', {
   idUser: { // Cambiado de idUsers a idUser
@@ -40,13 +41,13 @@ const User = sequelize.define('user', {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  idPaidPlanForUser: {
+  idPaidPlan: {
     type: DataTypes.INTEGER,
     allowNull: true
   },
 });
 
-
+User.belongsTo(PaidPlan, { foreignKey: 'idPaidPlan' });
 
 
 export default User;

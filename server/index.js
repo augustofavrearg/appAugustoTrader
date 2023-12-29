@@ -6,10 +6,20 @@ Inicia el servidor Express llamando al método listen en el objeto app, y muestr
 
 */ 
 
-import app from './app.js'
-const port = 4000;
+import sequelize from './dbconnection.js';
+import app from './app.js';
 
-// Inicia el servidor
-app.listen(port, () => {
-  console.log(`Servidor escuchando en http://localhost:${port}`);
+
+sequelize.sync({ force: true }).then(() => {
+
+
+
+
+  const port = 4000;
+  app.listen(port, () => {
+    console.log(`Servidor escuchando en http://localhost:${port}`);
+  });
+
+}).catch((error) => {
+  console.error('Error al sincronizar modelos con la base de datos:', error);
 });
