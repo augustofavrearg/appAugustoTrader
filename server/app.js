@@ -18,6 +18,7 @@ import express from 'express';
 import cors from 'cors';
 import routerAdmin from './routes/admin.routes.js';
 import routerUser from './routes/user.routes.js';
+import routerPaidPlans from './routes/paidplans.routes.js';
 
 const app = express();
 
@@ -33,6 +34,6 @@ app.use(express.json());
 // Rutas
 app.use('/apiUser', routerUser);
 app.use('/apiAdmin', routerAdmin);
-
+app.use('/apiPaidPlans', routerPaidPlans);
 
 export default app;
